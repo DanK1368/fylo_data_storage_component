@@ -1,0 +1,186 @@
+@import "resets";
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+$header1: 2.5rem;
+$text: 1.4rem;
+
+$main-font: "Raleway", sans-serif;
+
+$gradient-color: linear-gradient(
+  to right,
+  hsl(6, 100%, 80%),
+  hsl(335, 100%, 65%)
+);
+
+$text-color: hsl(243, 100%, 93%);
+$primary-bg-color: hsl(228, 56%, 26%);
+$secondary-bg-color: hsl(229, 57%, 11%);
+
+@mixin flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+body {
+  font-family: $main-font;
+}
+
+p {
+  font-size: $text;
+  color: $text-color;
+}
+
+main {
+  min-height: 100vh;
+  background-image: url("/images/bg-mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @include flex(column, center, center);
+  gap: 2rem;
+}
+
+.container {
+  background: $primary-bg-color;
+  padding: 4rem;
+  width: clamp(30rem, 90%, 45rem);
+  margin: 2rem auto 2rem auto;
+}
+
+.icon__container {
+  border-radius: 10px 100px 10px 10px;
+}
+
+.img__container {
+  @include flex(row, flex-start, center);
+  margin-top: 3rem;
+
+  .icon__wrapper {
+    width: 5rem;
+    height: 5rem;
+    @include flex(row, center, center);
+    background: $secondary-bg-color;
+    border-radius: 10px;
+
+    &:nth-child(2) {
+      margin: 0rem 2rem;
+    }
+  }
+}
+
+.main__storage__container {
+  border-radius: 10px;
+  @include flex(column, center, center);
+  gap: 1rem;
+  position: relative;
+
+  .bold__text {
+    font-weight: 700;
+  }
+
+  .text__container {
+    @include flex(row, space-between, center);
+    width: 100%;
+    padding-bottom: 3rem;
+  }
+
+  .progress__bar {
+    width: 100%;
+    height: 2.5rem;
+    background: $secondary-bg-color;
+    border-radius: 99999px;
+    padding: 0.35rem;
+
+    .inner__bar {
+      left: 0px;
+      top: 0px;
+      width: 6%;
+      height: 100%;
+      background: $gradient-color;
+      border-radius: 99999px;
+      position: relative;
+      animation: progressbar__animation 2s ease-in-out forwards;
+
+      &::after {
+        content: "";
+        background: white;
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 100%;
+        height: 1.5rem;
+        width: 1.5rem;
+        opacity: 0;
+        animation: circle 2s linear forwards;
+      }
+    }
+
+    @keyframes progressbar__animation {
+      to {
+        width: 80%;
+      }
+    }
+    @keyframes circle {
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  .remaining__space__container {
+    padding: 1rem 2.5rem;
+    background: white;
+    font-weight: 600;
+    letter-spacing: 0.2ch;
+    border-radius: 10px;
+    @include flex(row, space-around, center);
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    p {
+      color: rgba(0, 0, 0, 0.4);
+      padding-left: 1rem;
+      width: max-content;
+    }
+    .big__text {
+      color: black;
+      font-size: 4rem;
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  main {
+    @include flex(row, center, center);
+    gap: 4rem;
+
+    background-color: $secondary-bg-color;
+    background-image: url("/images/bg-desktop.png");
+    background-size: contain;
+    background-position: bottom;
+  }
+
+  .icon__container {
+    width: 35rem;
+    margin: 0rem 0rem 0rem 2rem;
+  }
+
+  .main__storage__container {
+    width: clamp(35rem, 90%, 70rem);
+    margin: 0rem 2rem 0rem 0rem;
+    position: relative;
+
+    .remaining__space__container {
+      position: absolute;
+      transform: translate(20px, -170px);
+    }
+  }
+}
