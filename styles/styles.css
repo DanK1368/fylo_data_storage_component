@@ -351,6 +351,14 @@ main {
     position: absolute;
     -webkit-transform: translate(20px, -170px);
             transform: translate(20px, -170px);
+    
+    .main__storage__container .remaining__space__container::after {
+    content: "";
+    position: absolute;
+    bottom: -35px;
+    right: 0px;
+    border-left: 50px solid transparent;
+    border-top: 50px solid white;
   }
 }
 /*# sourceMappingURL=styles.css.map */
