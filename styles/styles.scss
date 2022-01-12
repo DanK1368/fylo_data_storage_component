@@ -182,6 +182,14 @@ main {
     .remaining__space__container {
       position: absolute;
       transform: translate(20px, -170px);
+      
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -35px;
+        right: 0px;
+        border-left: 50px solid transparent;
+        border-top: 50px solid white;
     }
   }
 }
