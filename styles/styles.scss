@@ -37,7 +37,7 @@ p {
 
 main {
   min-height: 100vh;
-  background-image: url("/images/bg-mobile.png");
+  background-image: url("/fylo_data_storage_component/images/bg-mobile.png");
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -163,7 +163,7 @@ main {
     gap: 4rem;
 
     background-color: $secondary-bg-color;
-    background-image: url("/images/bg-desktop.png");
+    background-image: url("/fylo_data_storage_component/images/bg-desktop.png");
     background-size: contain;
     background-position: bottom;
   }
@@ -182,14 +182,16 @@ main {
     .remaining__space__container {
       position: absolute;
       transform: translate(20px, -170px);
-      
+
       &::after {
         content: "";
         position: absolute;
-        bottom: -35px;
+        bottom: -20px;
         right: 0px;
         border-left: 50px solid transparent;
-        border-top: 50px solid white;
+        border-top: 30px solid white;
+      }
     }
   }
 }
+
